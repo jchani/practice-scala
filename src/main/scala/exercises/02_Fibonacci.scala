@@ -8,6 +8,9 @@ object Fibonacci {
    *    fib(2) = 1
    *    fib(n) = fib(n-1) + fib(n-2)
    */
-  def fib(n: Int): Int = 0
+  def fib(n: Int): Int = n match {
+  	case(1 | 2) => 1
+  	case( _ ) => fib(n-1) + fib(n-2)
+  }
 
 }

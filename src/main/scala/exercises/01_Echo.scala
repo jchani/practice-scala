@@ -23,5 +23,5 @@ object Echo {
    * This exercise is taken from ScalaLabs:
    * 		https://github.com/scala-labs/scala-labs/blob/master/labs/src/main/scala/org/scalalabs/basic/lab01/HelloWorldExercise.scala
    */
-  def echo(message: String): String = "Change me"
+  def echo(message: String): String = message
 }

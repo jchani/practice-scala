@@ -64,5 +64,5 @@ object HelloWorld {
    * This exercise is taken from ScalaLabs:
    * 		https://github.com/scala-labs/scala-labs/blob/master/labs/src/main/scala/org/scalalabs/basic/lab01/HelloWorldExercise.scala
    */
-  val message: String = "Change me"
+  val message: String = "Hello world!"
 }
