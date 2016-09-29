@@ -31,14 +31,15 @@ object Collections {
    * 
    */
   def firstElementInList[T](l: List[T]): T = {
-    error("fix me")
+    l(0)
   }
 
   /**
    * Get the sum of all the elements in the list, e.g. sumOfList(List(1,2,3)) = 6.
    */
-  def sumOfList(l: List[Int]): Int = {
-    error("fix me")
+  def sumOfList(l: List[Int]): Int = l match{
+    case Nil => 0
+    case l::rest => l + sumOfList(rest)
   }
 
   /**
@@ -51,7 +52,7 @@ object Collections {
    *  - ... etc
    */
   def lastElementInList[T](l: List[T]): T = {
-    error("fix me")
+    l(l.length-1)
   }
 
    /**
@@ -65,7 +66,7 @@ object Collections {
    *  - ... etc
    */
   def nthElementInList[T](n: Int, l: List[T]): T = {
-    error("fix me")
+    l(n)
   }
 
   /**
@@ -79,7 +80,7 @@ object Collections {
    *  - ... etc 
    */
   def concatLists[T](l1: List[T], l2: List[T]): List[T] = {
-    error("fix me")
+    List.concat(l1, l2)
   }
 
   /**
@@ -92,7 +93,7 @@ object Collections {
    * 
    */
   def sortList[T <% Ordered[T]](list: List[T]): List[T] = {
-    error("fix me")
+    list.sorted
   }
 
   /**
@@ -103,7 +104,7 @@ object Collections {
    * to implement in your own free-style way.
    */
   def elementExists[T](l: List[T], e: T): Boolean = {
-    error("fix me")
+    l.contains(e)
   }
 
   /**
@@ -113,8 +114,10 @@ object Collections {
    * As always, use either build-in functions, or roll your own way via a
    * pattern match or some other method.
    */
-  def oddElements(iList: List[Int]): List[Int] = {
-    error("fix me")
+  def oddElements(iList: List[Int]): List[Int] = iList match{
+    case odd::even::rest => odd::oddElements(rest)
+    case odd::Nil => List(odd)
+    case Nil => List()
   }
 
   /**
@@ -129,8 +132,9 @@ object Collections {
    * Implement it whatever way suites you best. Hint: it can be done in a 
    * neat way using recursion. 
    */
-  def tails[T](l: List[T]): List[List[T]] = {
-    error("fix me")
+  def tails[T](l: List[T]): List[List[T]] = l match {
+    case Nil => List(List())
+    case _ :: t => l::tails(t)
   }
   
   /**
@@ -139,23 +143,25 @@ object Collections {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.max
   }
 
   /**
    * Calculate the sum of the equally position elements
    * of the two list
    */
-  def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+  def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = (l1, l2) match{
+    case (e1::rest1, e2::rest2) => (e1+e2)::sumOfTwo(rest1, rest2)
+    case (e1::rest1, Nil) => l1
+    case (Nil, e2::rest2) => l2
+    case(Nil, Nil) => List()
   }
 
   /**
    *  For this exercise preferably make use of the sumOfTwo
    * method above
    */
-  def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+  def sumOfMany(l: List[Int]*): List[Int] = {l.fold(List())(sumOfTwo) //using fold on a list of lists (therefore, startval must be the type List())
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
